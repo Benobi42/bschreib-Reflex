@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
-    protected IOManager1 appIOMan = new IOManager1();
+    protected IOManager appIOMan = new IOManager();
 
 
     @Override

@@ -56,7 +56,6 @@ public class IOManager implements Parcelable{
             fis.close();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            //statisticList = new StatisticList();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             throw new RuntimeException(e);
@@ -69,7 +68,6 @@ public class IOManager implements Parcelable{
             FileOutputStream fos = activity.openFileOutput(FILENAME, 0);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
-            //ArrayList<Statistic> statistics = statisticList.getStatsList();
             gson.toJson(statisticList, out);
             out.flush();
             fos.close();

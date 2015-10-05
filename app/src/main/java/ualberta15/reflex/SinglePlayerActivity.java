@@ -12,11 +12,9 @@ import android.widget.Toast;
 public class SinglePlayerActivity extends AppCompatActivity {
 
     private ReflexGame singlePlayerGame;
-    Button buzzerButton;
-    //boolean readyToStart = false;
+    private Button buzzerButton;
     boolean gameRunning = true;
     private StatisticManager statsMan;
-    //private Thread gameThread;
     private IOManager myIOMan;
 
     //Based on answer by Zaid at "http://stackoverflow.com/questions/7478941/implementing-a-while-loop-in-android"
@@ -51,10 +49,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
         PopUp(findViewById(R.id.singlePlayerLayout), "Wait Until The Button Turns Green To Press. If Pressed Early, The Game Will Fail And Reset", 1);
 
-        //while (!readyToStart) ChangeButtonColor(Color.RED);
-        // Start the game
-        //singlePlayerGame = new ReflexGame();
-        //StartSingleThread();
     }
 
 
@@ -82,19 +76,13 @@ public class SinglePlayerActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     // Reset the game
                     ChangeButtonColor(buzzerButton, Color.RED);
-                    singlePlayerGame = new ReflexGame(statsMan);
+                    singlePlayerGame.Restart();
                     StartSingleThread();
                     Toast.makeText(SinglePlayerActivity.this, "Game Restarted", Toast.LENGTH_SHORT).show();
                 }
             });
         }
         AlertDialog popUpDialog = popUpBuilder.create();
-        popUpDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                singlePlayerGame = new ReflexGame(statsMan);
-            }
-        });
         popUpDialog.show();
     }
 
@@ -106,16 +94,6 @@ public class SinglePlayerActivity extends AppCompatActivity {
             @Override
             public void run() {
                 buttonToChange.setBackgroundColor(newButtonColor);
-            }
-        });
-    }
-
-    public void UpdateBuzzerColor(Button button){
-        final Button buzzerButton = button;
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                buzzerButton.setBackgroundColor(singlePlayerGame.getBuzzerColor());
             }
         });
     }

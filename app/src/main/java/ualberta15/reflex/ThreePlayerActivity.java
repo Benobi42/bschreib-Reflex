@@ -14,7 +14,7 @@ public class ThreePlayerActivity extends AppCompatActivity {
     boolean gameOver = false;
     private String gameType = "Three Player Game";
     private StatisticManager statsMan;
-    private IOManager1 myIOMan;
+    private IOManager myIOMan;
 
     Runnable ThreePlayerRunnable = new Runnable() {
         @Override
@@ -31,7 +31,7 @@ public class ThreePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three_player);
 
-        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan,this);
 
         threePlayerGame = new ThreePlayerGame(statsMan);

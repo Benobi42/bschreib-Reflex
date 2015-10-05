@@ -39,12 +39,8 @@ public class Statistic implements Comparable<Statistic> {
     }
 
     //Based on "http://www.mkyong.com/java/java-object-sorting-example-comparable-and-comparator/"
-    public int compareTo(Statistic compareStat){
-        int compareReactionTime= ((Statistic) compareStat).getReactionTime();
+    public int compareTo(Statistic compareStat) {
+        int compareReactionTime = ((Statistic) compareStat).getReactionTime();
         return this.reactionTime - compareReactionTime;
-    }
-
-    public String toStatString(){
-        return name + ':' + type + ':' + reactionTime+'\n';
     }
 }
