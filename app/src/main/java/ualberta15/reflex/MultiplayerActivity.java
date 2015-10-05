@@ -8,14 +8,14 @@ import android.widget.Button;
 
 public class MultiplayerActivity extends AppCompatActivity {
 
-    private IOManager1 appIOMan;
+    private IOManager appIOMan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer);
 
-        appIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
+        appIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
 
         Button twoPlayerButton = (Button) findViewById(R.id.TwoPlayerButton);
         twoPlayerButton.setOnClickListener(new View.OnClickListener() {

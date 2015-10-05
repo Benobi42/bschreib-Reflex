@@ -10,12 +10,12 @@ import java.util.ArrayList;
 public class StatisticManager {
     private StatisticList statisticList;
     private static final String FILENAME = "stat.sav";
-    private IOManager1 myIOMan;
+    private IOManager myIOMan;
     private StatisticCalculator statsCalc;
     private Activity myActivity;
 
 
-    public StatisticManager(IOManager1 IOMan, Activity activity) {
+    public StatisticManager(IOManager IOMan, Activity activity) {
         statisticList = new StatisticList();
         statsCalc = new StatisticCalculator();
         myActivity = activity;

@@ -17,7 +17,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     boolean gameRunning = true;
     private StatisticManager statsMan;
     //private Thread gameThread;
-    private IOManager1 myIOMan;
+    private IOManager myIOMan;
 
     //Based on answer by Zaid at "http://stackoverflow.com/questions/7478941/implementing-a-while-loop-in-android"
     Runnable gameRunnable = new Runnable() {
@@ -33,7 +33,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan,this);
 
         setContentView(R.layout.activity_single_player);

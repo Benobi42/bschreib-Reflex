@@ -14,7 +14,7 @@ public class FourPlayerActivity extends AppCompatActivity {
     boolean gameOver = false;
     private String gameType = "Four Player Game";
     private StatisticManager statsMan;
-    private IOManager1 myIOMan;
+    private IOManager myIOMan;
 
     Runnable FourPlayerRunnable = new Runnable() {
         @Override
@@ -31,7 +31,7 @@ public class FourPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_player);
 
-        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan, this);
 
         fourPlayerGame = new FourPlayerGame(statsMan);

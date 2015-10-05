@@ -21,7 +21,7 @@ public class StatisticsActivity extends AppCompatActivity {
     private ArrayList<String> calculatedStats;
     private ArrayAdapter<String> calculatedAdapter;
     private Activity me = this;
-    private IOManager1 myIOMan;
+    private IOManager myIOMan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class StatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
         calculatedList = (ListView) findViewById(R.id.statisticsList);
 
-        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan, this);
 
         Button clearButton = (Button) findViewById(R.id.clearButton);

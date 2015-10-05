@@ -14,7 +14,7 @@ public class TwoPlayerActivity extends AppCompatActivity {
     boolean gameOver = false;
     private String gameType = "Two Player Game";
     private StatisticManager statsMan;
-    private IOManager1 myIOMan;
+    private IOManager myIOMan;
 
     Runnable twoPlayerRunnable = new Runnable() {
         @Override
@@ -31,7 +31,7 @@ public class TwoPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_player);
 
-        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan,this);
 
         twoPlayerGame = new TwoPlayerGame(statsMan);
