@@ -31,7 +31,7 @@ public class ThreePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three_player);
 
-        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
+        myIOMan = getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan,this);
 
         threePlayerGame = new ThreePlayerGame(statsMan);
@@ -44,7 +44,6 @@ public class ThreePlayerActivity extends AppCompatActivity {
                 threePlayerGame.pressBuzzerOne();
             }
         });
-
 
         Button playerTwo = (Button) findViewById(R.id.PlayerTwoButton);
         playerTwo.setBackgroundColor(threePlayerGame.getPlayerTwoBuzzer().getBuzzerColor());

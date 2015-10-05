@@ -5,17 +5,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.net.http.HttpResponseCache;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ben on 03/10/2015.
- */
+
 public class StatisticManager {
     private StatisticList statisticList;
-    private static final String FILENAME = "stat.sav";
     private IOManager myIOMan;
     private StatisticCalculator statsCalc;
     private Activity myActivity;

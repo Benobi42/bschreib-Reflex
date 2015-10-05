@@ -17,7 +17,7 @@ import java.io.OutputStreamWriter;
 
 //Parcelable functions based on developer reference at "http://developer.android.com/reference/android/os/Parcelable.html"
 public class IOManager implements Parcelable{
-    private String FILENAME = "FILE1.sav";
+    private String FILENAME = "Statistics.sav";
 
     public IOManager() {
     }
