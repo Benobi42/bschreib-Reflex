@@ -3,16 +3,11 @@ package ualberta15.reflex;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.IOException;
-import java.io.ObjectStreamException;
-
 public class MenuActivity extends AppCompatActivity {
-    protected IOManager appIOMan = new IOManager();
+    protected IOManager1 appIOMan = new IOManager1();
 
 
     @Override

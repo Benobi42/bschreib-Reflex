@@ -1,6 +1,5 @@
 package ualberta15.reflex;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,21 +8,19 @@ import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Serializable;
 
 //Parcelable functions based on developer reference at "http://developer.android.com/reference/android/os/Parcelable.html"
-public class IOManager implements Parcelable{
+public class IOManager1 implements Parcelable{
     //private Context activity;
     private String FILENAME = "FILE1.sav";
 
-    public IOManager() {
+    public IOManager1() {
     }
 
     @Override
@@ -36,16 +33,16 @@ public class IOManager implements Parcelable{
         out.writeString(FILENAME);
     }
 
-    public static final Parcelable.Creator<IOManager> CREATOR = new Parcelable.Creator<IOManager>(){
-        public IOManager createFromParcel(Parcel in){
-            return new IOManager(in);
+    public static final Parcelable.Creator<IOManager1> CREATOR = new Parcelable.Creator<IOManager1>(){
+        public IOManager1 createFromParcel(Parcel in){
+            return new IOManager1(in);
         }
-        public IOManager[] newArray(int size){
-            return new IOManager[size];
+        public IOManager1[] newArray(int size){
+            return new IOManager1[size];
         }
     };
 
-    private IOManager(Parcel in){
+    private IOManager1(Parcel in){
         FILENAME = in.readString();
     }
 
@@ -60,12 +57,13 @@ public class IOManager implements Parcelable{
             fis.close();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
+            int i = 0;
             //statisticList = new StatisticList();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             throw new RuntimeException(e);
         }catch (NullPointerException e){
-            int t = 0;
+            int i = 0;
         }
     }
     public void saveStatsInFile(StatisticList statisticList, Context activity){
@@ -82,7 +80,7 @@ public class IOManager implements Parcelable{
             throw new RuntimeException(e);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            //throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 }

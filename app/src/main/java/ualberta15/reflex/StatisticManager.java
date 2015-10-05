@@ -2,28 +2,7 @@ package ualberta15.reflex;
 
 import android.app.Activity;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectInputValidation;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-
-import android.content.Context;
-import android.util.JsonReader;
-import android.util.Log;
 
 /**
  * Created by Ben on 03/10/2015.
@@ -31,12 +10,12 @@ import android.util.Log;
 public class StatisticManager {
     private StatisticList statisticList;
     private static final String FILENAME = "stat.sav";
-    private IOManager myIOMan;
+    private IOManager1 myIOMan;
     private StatisticCalculator statsCalc;
     private Activity myActivity;
 
 
-    public StatisticManager(IOManager IOMan, Activity activity) {
+    public StatisticManager(IOManager1 IOMan, Activity activity) {
         statisticList = new StatisticList();
         statsCalc = new StatisticCalculator();
         myActivity = activity;

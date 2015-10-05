@@ -2,11 +2,8 @@ package ualberta15.reflex;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,7 +14,7 @@ public class FourPlayerActivity extends AppCompatActivity {
     boolean gameOver = false;
     private String gameType = "Four Player Game";
     private StatisticManager statsMan;
-    private IOManager myIOMan;
+    private IOManager1 myIOMan;
 
     Runnable FourPlayerRunnable = new Runnable() {
         @Override
@@ -34,7 +31,7 @@ public class FourPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_player);
 
-        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan, this);
 
         fourPlayerGame = new FourPlayerGame(statsMan);

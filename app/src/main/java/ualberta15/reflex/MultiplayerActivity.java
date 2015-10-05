@@ -3,21 +3,19 @@ package ualberta15.reflex;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 public class MultiplayerActivity extends AppCompatActivity {
 
-    private IOManager appIOMan;
+    private IOManager1 appIOMan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplayer);
 
-        appIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
+        appIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
 
         Button twoPlayerButton = (Button) findViewById(R.id.TwoPlayerButton);
         twoPlayerButton.setOnClickListener(new View.OnClickListener() {

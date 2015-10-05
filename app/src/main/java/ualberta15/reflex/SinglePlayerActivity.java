@@ -1,25 +1,13 @@
 package ualberta15.reflex;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.Toast;
-
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 public class SinglePlayerActivity extends AppCompatActivity {
 
@@ -29,7 +17,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     boolean gameRunning = true;
     private StatisticManager statsMan;
     //private Thread gameThread;
-    private IOManager myIOMan;
+    private IOManager1 myIOMan;
 
     //Based on answer by Zaid at "http://stackoverflow.com/questions/7478941/implementing-a-while-loop-in-android"
     Runnable gameRunnable = new Runnable() {
@@ -45,7 +33,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
+        myIOMan = (IOManager1) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan,this);
 
         setContentView(R.layout.activity_single_player);
