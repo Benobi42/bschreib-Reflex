@@ -54,7 +54,7 @@ public class ReflexGame {
         else{
             gameOver = true;
             int lifeTime = getReflexBuzzer().timeAlive();
-            statsMan.addStat("ReflexButton", "Reaction", lifeTime);
+            statsMan.AddStat("ReflexButton", "Reaction", lifeTime);
             pressString = "Congrats! Button Was Pressed After " + lifeTime + " Milliseconds";
         }
         return pressString;

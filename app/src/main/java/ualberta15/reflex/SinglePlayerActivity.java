@@ -3,6 +3,7 @@ package ualberta15.reflex;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
     Runnable gameRunnable = new Runnable() {
         @Override
         public void run() {
-            while(singlePlayerGame.getReflexBuzzer().timeAlive() < 1 && gameRunning){
+            while(gameRunning){
                ChangeButtonColor(buzzerButton, singlePlayerGame.getBuzzerColor());
             }
         }
@@ -44,6 +45,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
                 gameRunning = false;
                 //ChangeButtonColor(buzzerButton, singlePlayerGame.getBuzzerColor());
                 PopUp(findViewById(R.id.singlePlayerLayout), singlePlayerGame.onPress(), 2);
+                SystemClock.sleep(100);
             }
         });
 
@@ -51,7 +53,11 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        gameRunning = false;
+    }
 
     //Based on code from "http://www.tutorialspoint.com/android/android_alert_dialoges.htm"
     public void PopUp(View v, String message, int mode){

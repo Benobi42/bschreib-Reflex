@@ -36,7 +36,7 @@ public class StatisticsActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                statsMan.clearStats();
+                statsMan.ClearStats();
                 setStatsView();
             }
         });
@@ -55,7 +55,7 @@ public class StatisticsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        myIOMan.loadStatsFromFile(statsMan.getStatisticList(), this);
+        myIOMan.loadStatsFromFile(statsMan.GetStatisticList(), this);
         setStatsView();
     }
 
@@ -70,7 +70,7 @@ public class StatisticsActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 //Based on answer by Syeda at "http://stackoverflow.com/questions/18799216/how-to-make-a-edittext-box-in-a-dialog"
                 String address = addressLine.getText().toString();
-                boolean emailed = statsMan.emailStats(address);
+                boolean emailed = statsMan.EmailStats(address);
                 if (emailed){
                     Toast.makeText(StatisticsActivity.this, "Statistics Emailed To " + address, Toast.LENGTH_SHORT).show();
                 }
@@ -84,7 +84,7 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     public void setStatsView () {
-        calculatedStats = statsMan.calculateStats();
+        calculatedStats = statsMan.CalculateStats();
         calculatedAdapter = new ArrayAdapter<String>(me, R.layout.stats_list, calculatedStats);
         calculatedList.setAdapter(calculatedAdapter);
         calculatedAdapter.notifyDataSetChanged();

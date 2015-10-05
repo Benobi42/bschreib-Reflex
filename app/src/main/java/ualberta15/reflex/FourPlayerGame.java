@@ -71,7 +71,7 @@ public class FourPlayerGame {
             gameOver = false;
         }
         else{
-            statsMan.addStat(winner.getPlayerName(), "FourPlayerWin", winner.timeAlive());
+            statsMan.AddStat(winner.getPlayerName(), "FourPlayerWin", winner.timeAlive());
             gameOver = true;
         }
         return gameOver;

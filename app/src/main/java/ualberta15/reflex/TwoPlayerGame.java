@@ -1,6 +1,5 @@
 package ualberta15.reflex;
 
-import android.app.AlertDialog;
 import android.graphics.Color;
 
 /**
@@ -48,7 +47,7 @@ public class TwoPlayerGame {
             gameOver = false;
         }
         else{
-            statsMan.addStat(winner.getPlayerName(), "TwoPlayerWin", winner.timeAlive());
+            statsMan.AddStat(winner.getPlayerName(), "TwoPlayerWin", winner.timeAlive());
             gameOver = true;
         }
         return gameOver;

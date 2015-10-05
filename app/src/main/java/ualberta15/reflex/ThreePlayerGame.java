@@ -59,7 +59,7 @@ public class ThreePlayerGame {
             gameOver = false;
         }
         else{
-            statsMan.addStat(winner.getPlayerName(), "ThreePlayerWin", winner.timeAlive());
+            statsMan.AddStat(winner.getPlayerName(), "ThreePlayerWin", winner.timeAlive());
             gameOver = true;
         }
         return gameOver;

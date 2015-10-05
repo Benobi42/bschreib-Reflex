@@ -1,8 +1,14 @@
 package ualberta15.reflex;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.net.http.HttpResponseCache;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ben on 03/10/2015.
@@ -23,27 +29,50 @@ public class StatisticManager {
         myIOMan.loadStatsFromFile(statisticList, myActivity);
     }
 
-    public void addStat(String name, String type, int reactionTime){
+    public void AddStat(String name, String type, int reactionTime){
         Statistic myStat = new Statistic(name, type, reactionTime);
         statisticList.addStat(myStat);
         myIOMan.saveStatsInFile(statisticList, myActivity);
     }
 
-    public StatisticList getStatisticList() {
+    public StatisticList GetStatisticList() {
         return statisticList;
     }
 
-    public void clearStats(){
+    public void ClearStats(){
         StatisticList blankStatList= new StatisticList();
         statisticList.setStatsList(blankStatList);
         myIOMan.saveStatsInFile(statisticList, myActivity);
     }
 
-    public boolean emailStats(String address){
+    //based on example at "https://developer.android.com/training/basics/intents/sending.html"
+    public boolean EmailStats(String address){
+        ArrayList<String> calculatedStats = CalculateStats();
+        StringBuffer statsBuffer = new StringBuffer(calculatedStats.size());
+        for (int i = 0; i < calculatedStats.size(); i++){
+            statsBuffer.append(calculatedStats.get(i)+'\n');
+        }
+        String statsString = new String(statsBuffer);
+        try{
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", address, null));
+            // type
+            //emailIntent.setType("mailto");
+            //emailIntent.putExtra(Intent.EXTRA_EMAIL, address); // recipient address
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Statistics from bschreib-Reflex");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, statsString);
+            PackageManager packMan = myActivity.getPackageManager();
+            List<ResolveInfo> activities = packMan.queryIntentActivities(emailIntent, 0);
+            boolean isIntentSafe = (activities.size() > 0);
+            if (isIntentSafe){
+                myActivity.startActivity(Intent.createChooser(emailIntent, "Send email..."));
+            }
+        }catch (Exception e){
+            return false;
+        }
         return true;
     }
 
-    public ArrayList<String> calculateStats(){
+    public ArrayList<String> CalculateStats(){
         ArrayList<String> calcArray = new ArrayList<String>();
 
         int[] means = statsCalc.getMeans(statisticList);
