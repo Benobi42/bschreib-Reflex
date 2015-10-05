@@ -18,10 +18,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
 
-/**
- * Created by Ben on 04/10/2015.
- */
-
 //Parcelable functions based on developer reference at "http://developer.android.com/reference/android/os/Parcelable.html"
 public class IOManager implements Parcelable{
     //private Context activity;
@@ -64,12 +60,13 @@ public class IOManager implements Parcelable{
             fis.close();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
+            int i = 0;
             //statisticList = new StatisticList();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             throw new RuntimeException(e);
         }catch (NullPointerException e){
-
+            int i = 0;
         }
     }
     public void saveStatsInFile(StatisticList statisticList, Context activity){
