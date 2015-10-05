@@ -3,14 +3,13 @@ package ualberta15.reflex;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by Ben on 03/10/2015.
- */
+// Class that has methods for calculating things from statisticLists
 public class StatisticCalculator {
 
     public StatisticCalculator() {
     }
 
+    // Calculates the means for the last 10, last 100 and all items within the StatisticList
     public int[] getMeans(StatisticList statisticList){
         int sumAll = 0;
         int sumHun = 0;
@@ -70,6 +69,7 @@ public class StatisticCalculator {
         return means;
     }
 
+    // Calculates the minimum value for the last 10, last 100 and all items within the StatisticList
     public int[] getMins(StatisticList statisticList){
         int minAll = 0;
         int minHun = 0;
@@ -117,6 +117,7 @@ public class StatisticCalculator {
         return mins;
     }
 
+    // Calculates the maximum value for the last 10, last 100 and all items within the StatisticList
     public int[] getMaxes(StatisticList statisticList){
         int maxAll = 0;
         int maxHun = 0;
@@ -154,6 +155,7 @@ public class StatisticCalculator {
         return maxes;
     }
 
+    // Calculates the median value for the last 10, last 100 and all items within the StatisticList (the item in the middle of the array)
     public int[] getMeds(StatisticList statisticList){
 
         int medAll = 0;
@@ -200,6 +202,8 @@ public class StatisticCalculator {
         return meds;
     }
 
+    //Goes through the StatisticList and sees how many Two Player Game Show Statistics there are,
+    // and how many each buzzer won
     public int[] getTwoPlayerBuzzes(StatisticList statisticList){
         int playerOneBuzzes = 0;
         int playerTwoBuzzes = 0;
@@ -220,6 +224,8 @@ public class StatisticCalculator {
         return twoPlayerBuzzes;
     }
 
+    //Goes through the StatisticList and sees how many Three Player Game Show Statistics there are,
+    // and how many each buzzer won
     public int[] getThreePlayerBuzzes(StatisticList statisticList){
         int playerOneBuzzes = 0;
         int playerTwoBuzzes = 0;
@@ -245,6 +251,8 @@ public class StatisticCalculator {
         return threePlayerBuzzes;
     }
 
+    //Goes through the StatisticList and sees how many Four Player Game Show Statistics there are,
+    // and how many each buzzer won
     public int[] getFourPlayerBuzzes(StatisticList statisticList){
         int playerOneBuzzes = 0;
         int playerTwoBuzzes = 0;

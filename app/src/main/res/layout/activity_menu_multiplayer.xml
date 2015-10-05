@@ -5,39 +5,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:id="@+id/multiplayerLayout"
-    tools:context="ualberta15.reflex.MultiplayerActivity">
+    tools:context="ualberta15.reflex.MultiplayerMenuActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Player One"
+        android:layout_weight="3"
+        android:text="Two Players"
         android:textSize="20pt"
-        android:id="@+id/PlayerOneButton"/>
+        android:id="@+id/TwoPlayerButton" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Player Two"
+        android:layout_weight="3"
+        android:text="Three Players"
         android:textSize="20pt"
-        android:id="@+id/PlayerTwoButton" />
+        android:id="@+id/ThreePlayerButton" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Player Three"
+        android:layout_weight="3"
+        android:text="Four Players"
         android:textSize="20pt"
-        android:id="@+id/PlayerThreeButton"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Player Four"
-        android:textSize="20pt"
-        android:id="@+id/PlayerFourButton" />
-
+        android:id="@+id/FourPlayerButton" />
 </LinearLayout>

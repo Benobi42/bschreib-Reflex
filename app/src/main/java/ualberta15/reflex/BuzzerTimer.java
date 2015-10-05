@@ -1,9 +1,5 @@
 package ualberta15.reflex;
 
-/**
- * Created by Ben on 01/10/2015.
- */
-
 // Class to track the time that it has been alive
 public class BuzzerTimer {
     private int startTime;
