@@ -54,7 +54,7 @@ public class IOManager implements Parcelable{
         out.writeString(filename);
     }
 
-    public static final Parcelable.Creator<IOManager> parcelCreator = new Parcelable.Creator<IOManager>(){
+    public static final Parcelable.Creator<IOManager> CREATOR = new Parcelable.Creator<IOManager>(){
         public IOManager createFromParcel(Parcel in){
             return new IOManager(in);
         }
