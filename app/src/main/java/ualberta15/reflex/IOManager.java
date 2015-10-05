@@ -38,7 +38,7 @@ import java.io.OutputStreamWriter;
 //Function that allows for reading and writing to a File, to be maintained throughout all activities
 public class IOManager implements Parcelable{
     //Name of the File that Statistics will be saved in
-    private static String FILENAME = "Statistics.sav";
+    private static String filename = "Statistics.sav";
 
     public IOManager() {
     }
@@ -51,7 +51,7 @@ public class IOManager implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel out, int flags){
-        out.writeString(FILENAME);
+        out.writeString(filename);
     }
 
     public static final Parcelable.Creator<IOManager> CREATOR = new Parcelable.Creator<IOManager>(){
@@ -65,13 +65,13 @@ public class IOManager implements Parcelable{
 
     //Constructor that generates the IOManager from a parcel
     private IOManager(Parcel in){
-        FILENAME = in.readString();
+        filename = in.readString();
     }
 
     //Loads the Statistics, in json format, from the file and saves them into a StatisticList
     public void loadStatsFromFile(StatisticList statisticList, Context activity) {
         try {
-            FileInputStream fis = activity.openFileInput(FILENAME);
+            FileInputStream fis = activity.openFileInput(filename);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             Gson gson = new Gson();
             //https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
@@ -90,7 +90,7 @@ public class IOManager implements Parcelable{
     //Saves the Statistics, from a StatisticList, to the file in json Format
     public void saveStatsInFile(StatisticList statisticList, Context activity){
         try {
-            FileOutputStream fos = activity.openFileOutput(FILENAME, 0);
+            FileOutputStream fos = activity.openFileOutput(filename, 0);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
             gson.toJson(statisticList, out);
