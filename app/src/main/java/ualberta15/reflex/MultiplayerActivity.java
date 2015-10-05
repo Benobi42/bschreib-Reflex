@@ -79,7 +79,6 @@ public class MultiplayerActivity extends AppCompatActivity {
                 }
             });
         } else{
-            //playerThree.setHeight(0);
             playerThree.setVisibility(View.GONE);
         }
 
@@ -93,7 +92,6 @@ public class MultiplayerActivity extends AppCompatActivity {
                 }
             });
         } else{
-            //playerFour.setHeight(0);
             playerFour.setVisibility(View.GONE);
         }
 
