@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ualberta15.reflex" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SinglePlayerActivity"
+            android:label="@string/title_activity_single_player" >
+        </activity>
+        <activity
+            android:name=".TwoPlayerActivity"
+            android:label="@string/title_activity_two_player" >
+        </activity>
+        <activity
+            android:name=".ThreePlayerActivity"
+            android:label="@string/title_activity_three_player" >
+        </activity>
+        <activity
+            android:name=".FourPlayerActivity"
+            android:label="@string/title_activity_four_player" >
+        </activity>
+        <activity
+            android:name=".MultiplayerActivity"
+            android:label="@string/title_activity_multiplayer" >
+        </activity>
+        <activity
+            android:name=".StatisticsActivity"
+            android:label="@string/title_activity_statistics"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+    </application>
+
+</manifest>
