@@ -50,7 +50,7 @@ public class MenuActivity extends AppCompatActivity {
             intent.putExtra("IOManager", appIOMan);
         }
         if (mode == 2){
-            intent = new Intent(this, MultiplayerActivity.class);
+            intent = new Intent(this, MultiplayerMenuActivity.class);
             intent.putExtra("IOManager", appIOMan);
         }
         if (mode ==3){

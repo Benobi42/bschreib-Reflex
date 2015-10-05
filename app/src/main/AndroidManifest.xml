@@ -21,24 +21,17 @@
             android:label="@string/title_activity_single_player" >
         </activity>
         <activity
-            android:name=".TwoPlayerActivity"
-            android:label="@string/title_activity_two_player" >
-        </activity>
-        <activity
-            android:name=".ThreePlayerActivity"
-            android:label="@string/title_activity_three_player" >
-        </activity>
-        <activity
-            android:name=".FourPlayerActivity"
-            android:label="@string/title_activity_four_player" >
-        </activity>
-        <activity
-            android:name=".MultiplayerActivity"
+            android:name=".MultiplayerMenuActivity"
             android:label="@string/title_activity_multiplayer" >
         </activity>
         <activity
             android:name=".StatisticsActivity"
             android:label="@string/title_activity_statistics" >
+        </activity>
+        <activity
+            android:name=".MultiplayerActivity"
+            android:label="@string/title_activity_multiplayer"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
