@@ -9,7 +9,7 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// Class that holds a StatisticList and has methods that act on it
 public class StatisticManager {
     private StatisticList statisticList;
     private IOManager myIOMan;
@@ -25,6 +25,8 @@ public class StatisticManager {
         myIOMan.loadStatsFromFile(statisticList, myActivity);
     }
 
+    //Creates a new Statistic with the inputted name, type and reactionTime, and adds that
+    //Statistic to the StatisticList, then saves the updated StatisticList in the File
     public void AddStat(String name, String type, int reactionTime){
         Statistic myStat = new Statistic(name, type, reactionTime);
         statisticList.addStat(myStat);
@@ -35,6 +37,7 @@ public class StatisticManager {
         return statisticList;
     }
 
+    //Clears the StatisticList and saves the blank list in the File
     public void ClearStats(){
         StatisticList blankStatList= new StatisticList();
         statisticList.setStatsList(blankStatList);
@@ -42,18 +45,24 @@ public class StatisticManager {
     }
 
     //based on example at "https://developer.android.com/training/basics/intents/sending.html"
+    //Emails the calculated Statistics (Mean, Min, Max, Median, Multiplayer Buzzes) to an
+    //inputted email address using a pre-set up email program
     public boolean EmailStats(String address){
+        //Calculates the stats, and saves the resulting strings in an ArrayList
         ArrayList<String> calculatedStats = CalculateStats();
+        //Creates a StringBuffer with the size of the calculatedStats ArrayList
         StringBuffer statsBuffer = new StringBuffer(calculatedStats.size());
         for (int i = 0; i < calculatedStats.size(); i++){
+            //For every item in the String Arraylist, add the string to the buffer and close with a
+            //newline character
             statsBuffer.append(calculatedStats.get(i)+'\n');
         }
+        //Create a string from the StringBuffer
         String statsString = new String(statsBuffer);
+
+        //Tries to email the String of Calculated Statistics to the inputted email address
         try{
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", address, null));
-            // type
-            //emailIntent.setType("mailto");
-            //emailIntent.putExtra(Intent.EXTRA_EMAIL, address); // recipient address
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Statistics from bschreib-Reflex");
             emailIntent.putExtra(Intent.EXTRA_TEXT, statsString);
             PackageManager packMan = myActivity.getPackageManager();
@@ -63,11 +72,14 @@ public class StatisticManager {
                 myActivity.startActivity(Intent.createChooser(emailIntent, "Send email..."));
             }
         }catch (Exception e){
+            //If it fails, notify the caller that it was unable to email
             return false;
         }
+        //If the emailing was successful, notify the callse
         return true;
     }
 
+    //Returns an ArrayList of Strings, where each String is a certain type of calculated Statistic
     public ArrayList<String> CalculateStats(){
         ArrayList<String> calcArray = new ArrayList<String>();
 

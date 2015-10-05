@@ -2,33 +2,23 @@ package ualberta15.reflex;
 
 import android.graphics.Color;
 
-/**
- * Created by Ben on 01/10/2015.
- */
+//Class that runs a single player reaction time buzzer
 public class ReflexGame {
 
-    private int mode;
     private Buzzer reflexBuzzer;
     private StatisticManager statsMan;
-    boolean gameOver = false;
 
     public ReflexGame(StatisticManager statisticManager) {
         this.statsMan = statisticManager;
         this.reflexBuzzer = new Buzzer("ReflexBuzzer");
     }
 
-    public void setMode(int mode) {
-        this.mode = mode;
-    }
-
-    public int getMode() {
-        return mode;
-    }
-
     public Buzzer getReflexBuzzer() {
         return reflexBuzzer;
     }
 
+    //Returns a integer, as defined in Color, that corresponds to a particular color depending on
+    //if the reflexBuzzer has been alive for more or less time than its randomly generated break-time
     public int getBuzzerColor() {
         int myColor;
         if (reflexBuzzer.checkTime()) {
@@ -40,11 +30,13 @@ public class ReflexGame {
         return myColor;
     }
 
+    //sets the reflexBuzzer to a new Buzzer, creating a new random time difference, thereby restarting the game
     public void Restart(){
         this.reflexBuzzer = new Buzzer("ReflexBuzzer");
 
     }
 
+    //Returns a string depending on if the reflex buzzer has been alive longer than its randomly generated break-time
     public String onPress(){
         String pressString = null;
         if (reflexBuzzer.timeAlive() < 0){
@@ -52,9 +44,11 @@ public class ReflexGame {
             pressString = "Button Was Pressed Too Early";
         }
         else{
-            gameOver = true;
+            //The amount of time that the buzzer has been greater than it's break-time
             int lifeTime = getReflexBuzzer().timeAlive();
+            //Generates a stat and adds it to the StatisticManager
             statsMan.AddStat("ReflexButton", "Reaction", lifeTime);
+            //Tell the player how long it took for them to press the buzzer
             pressString = "Congrats! Button Was Pressed After " + lifeTime + " Milliseconds";
         }
         return pressString;

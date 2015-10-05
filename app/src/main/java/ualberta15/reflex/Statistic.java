@@ -1,8 +1,6 @@
 package ualberta15.reflex;
 
-/**
- * Created by Ben on 03/10/2015.
- */
+//Class that is a Statistic for reaction times and game-show buzzer wins
 public class Statistic implements Comparable<Statistic> {
     private String name;
     private String type;
@@ -39,6 +37,7 @@ public class Statistic implements Comparable<Statistic> {
     }
 
     //Based on "http://www.mkyong.com/java/java-object-sorting-example-comparable-and-comparator/"
+    //Compares the reaction times of two stats together, returning the difference
     public int compareTo(Statistic compareStat) {
         int compareReactionTime = ((Statistic) compareStat).getReactionTime();
         return this.reactionTime - compareReactionTime;

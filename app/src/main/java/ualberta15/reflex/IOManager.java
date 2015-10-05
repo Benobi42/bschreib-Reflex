@@ -16,12 +16,16 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 //Parcelable functions based on developer reference at "http://developer.android.com/reference/android/os/Parcelable.html"
+//Input Output Manager
+//Function that allows for reading and writing to a File, to be maintained throughout all activities
 public class IOManager implements Parcelable{
-    private String FILENAME = "Statistics.sav";
+    //Name of the File that Statistics will be saved in
+    private static String FILENAME = "Statistics.sav";
 
     public IOManager() {
     }
 
+    //Functions required for Parcelable Interface
     @Override
     public int describeContents(){
         return 0;
@@ -41,10 +45,12 @@ public class IOManager implements Parcelable{
         }
     };
 
+    //Constructor that generates the IOManager from a parcel
     private IOManager(Parcel in){
         FILENAME = in.readString();
     }
 
+    //Loads the Statistics, in json format, from the file and saves them into a StatisticList
     public void loadStatsFromFile(StatisticList statisticList, Context activity) {
         try {
             FileInputStream fis = activity.openFileInput(FILENAME);
@@ -55,14 +61,15 @@ public class IOManager implements Parcelable{
             statisticList.setStatsList(statsList);
             fis.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
+            //Do Nothing
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             throw new RuntimeException(e);
         }catch (NullPointerException e){
-            int t = 0;
+            //Do Nothing
         }
     }
+
+    //Saves the Statistics, from a StatisticList, to the file in json Format
     public void saveStatsInFile(StatisticList statisticList, Context activity){
         try {
             FileOutputStream fos = activity.openFileOutput(FILENAME, 0);
@@ -76,7 +83,7 @@ public class IOManager implements Parcelable{
             throw new RuntimeException(e);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            //throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 }

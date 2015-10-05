@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+
+//Activity to run Functions for a Four Player Multi-Buzzer Game
 public class FourPlayerActivity extends AppCompatActivity {
 
     public FourPlayerGame fourPlayerGame;
@@ -16,6 +18,7 @@ public class FourPlayerActivity extends AppCompatActivity {
     private StatisticManager statsMan;
     private IOManager myIOMan;
 
+    //Runnable function to be run on a seperate thread, allowing for UI interaction as well as a loop
     Runnable FourPlayerRunnable = new Runnable() {
         @Override
         public void run() {
@@ -31,11 +34,15 @@ public class FourPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_player);
 
+        //Recieve the Input Output Manager from the calling activity and generate the Statistics Manager with it
         myIOMan = (IOManager) getIntent().getParcelableExtra("IOManager");
         statsMan = new StatisticManager(myIOMan, this);
 
+        //Generate the Four Player Game Show with the Statistics Manager
         fourPlayerGame = new FourPlayerGame(statsMan);
 
+        //Create a Button for each of the players, setting it to a different color than the others
+        //and sets their Click Listeners to perform a function within the FourPlayerGame
         Button playerOne = (Button) findViewById(R.id.PlayerOneButton);
         playerOne.setBackgroundColor(fourPlayerGame.getPlayerOneBuzzer().getBuzzerColor());
         playerOne.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +51,6 @@ public class FourPlayerActivity extends AppCompatActivity {
                 fourPlayerGame.pressBuzzerOne();
             }
         });
-
 
         Button playerTwo = (Button) findViewById(R.id.PlayerTwoButton);
         playerTwo.setBackgroundColor(fourPlayerGame.getPlayerTwoBuzzer().getBuzzerColor());
@@ -73,15 +79,19 @@ public class FourPlayerActivity extends AppCompatActivity {
             }
         });
 
+        //Create a PopUp Dialog to notify the Players of the rules
         PopUp(findViewById(R.id.fourPlayerLayout), gameType + ": When Ready, Press Start Game To Begin. First Person To Buzz In Wins!", 1);
         startFourPlayerThread();
 
     }
 
+    //Based on code from "http://www.tutorialspoint.com/android/android_alert_dialoges.htm"
+    //Generates a PopUp Dialog with the inputted message, with the contents depending on the mode
     public void PopUp(View view, String message, int mode){
         AlertDialog.Builder popUpBuilder = new AlertDialog.Builder(this);
         popUpBuilder.setMessage(message);
 
+        //Mode 1: To be called at the start of the Activity
         if (mode == 1){
             popUpBuilder.setNeutralButton("Start Game", new DialogInterface.OnClickListener() {
                 @Override
@@ -91,6 +101,7 @@ public class FourPlayerActivity extends AppCompatActivity {
             });
         }
 
+        //Mode 2: To be called after someone presses a buzzer, for them to restart or exit the game
         if (mode == 2) {
             popUpBuilder.setPositiveButton("Restart Game", new DialogInterface.OnClickListener() {
                 @Override
@@ -113,6 +124,7 @@ public class FourPlayerActivity extends AppCompatActivity {
         popUpDialog.show();
     }
 
+    //Function to be run after the game, to notify the Players of the winner
     public void afterGame(){
         runOnUiThread(new Runnable() {
             @Override
@@ -123,6 +135,7 @@ public class FourPlayerActivity extends AppCompatActivity {
         });
     }
 
+    //Creates a new thread with a runnable, and starts it
     public void startFourPlayerThread(){
         Thread fourPlayerThread = new Thread(FourPlayerRunnable);
         fourPlayerThread.start();

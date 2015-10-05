@@ -2,9 +2,7 @@ package ualberta15.reflex;
 
 import java.util.Random;
 
-/**
- * Created by Ben on 01/10/2015.
- */
+// Class that acts as a reaction timer and Button
 public class Buzzer {
     private String playerName;
     private BuzzerTimer buzzerTimer;
@@ -22,6 +20,8 @@ public class Buzzer {
     public Buzzer(String playerName) {
         this.playerName = playerName;
         this.buzzerTimer = new BuzzerTimer();
+        //Generate a random integer between 10 and 2000, to be used as the random time difference
+        //for ReflexGame
         this.randomTime = randomBetween(10, 2000);
     }
 
@@ -47,6 +47,8 @@ public class Buzzer {
         this.buzzerColor = buzzerColor;
     }
 
+    //Returns the time that the buzzer has been "alive", meaning the time since its creation
+    //minus the random time difference
     public int timeAlive() {
         return this.buzzerTimer.getTimeAlive() - randomTime;
     }

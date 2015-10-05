@@ -6,15 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//Activity for the Main Menu of the Application
 public class MenuActivity extends AppCompatActivity {
+    //Generates a Input Output Manager to be passed throughout activities
     protected IOManager appIOMan = new IOManager();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        //Generate the buttons on the menu, and sets their Click Listeners to open different activities
         Button singlePlayerModeButton = (Button) findViewById(R.id.modeButtonSinglePlayer);
         singlePlayerModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
+    //Opens different activities depending on the inputted mode, as well as passing the IOManager to them
     public void changeMode(View view, int mode){
         Intent intent = null;
         if (mode == 1) {

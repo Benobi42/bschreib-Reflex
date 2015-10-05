@@ -2,9 +2,7 @@ package ualberta15.reflex;
 
 import android.graphics.Color;
 
-/**
- * Created by Ben on 01/10/2015.
- */
+//Class to run a Four Player Multi-Buzzer Game
 public class FourPlayerGame {
     private Buzzer playerOneBuzzer;
     private Buzzer playerTwoBuzzer;
@@ -13,6 +11,7 @@ public class FourPlayerGame {
     private Buzzer winner;
     private StatisticManager statsMan;
 
+    //Generates the Game, and sets each Buzzer to have a different name and color
     public FourPlayerGame(StatisticManager statisticManager) {
         playerOneBuzzer = new Buzzer("Player One");
         int playerOneColor = Color.BLUE;
@@ -29,6 +28,7 @@ public class FourPlayerGame {
         statsMan = statisticManager;
     }
 
+    //Getters and Setters
     public Buzzer getPlayerOneBuzzer() {
         return playerOneBuzzer;
     }
@@ -65,12 +65,15 @@ public class FourPlayerGame {
         return winner;
     }
 
+    //To Be Looped in the activity, checks if there has been a buzzer press signifying a winner
+    //Returns a boolean signifying if there has been a winner
     public boolean fourGame(){
         boolean gameOver = false;
         if (winner == null){
             gameOver = false;
-        }
+    }
         else{
+            //Adds a new Statistic to the Statistic Manager signifying the winner of the game
             statsMan.AddStat(winner.getPlayerName(), "FourPlayerWin", winner.timeAlive());
             gameOver = true;
         }

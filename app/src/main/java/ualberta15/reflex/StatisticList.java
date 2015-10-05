@@ -2,9 +2,7 @@ package ualberta15.reflex;
 
 import java.util.ArrayList;
 
-/**
- * Created by Ben on 03/10/2015.
- */
+//Class that holds and maintains an arrayList of Statistics
 public class StatisticList {
     private ArrayList<Statistic> statsList;
 
@@ -20,10 +18,12 @@ public class StatisticList {
         this.statsList = statisticList.getStatsList();
     }
 
+    //Returns a specific Statistic at the inputted index
     public Statistic getStat(int index){
         return statsList.get(index);
     }
 
+    //Adds a Statistic to the end of the ArrayList
     public void addStat(Statistic stat){
         statsList.add(stat);
     }
